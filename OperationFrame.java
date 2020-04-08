@@ -6,8 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+//记录离校信息
 public class OperationFrame extends JFrame implements ActionListener {
-   
+    /************************定义各控件******************************/
     private String welcomMsg="选择如下操作:";
     private JLabel lblWelcome=new JLabel(welcomMsg);
     private JButton btQuery=new JButton("显示详细信息");
@@ -34,7 +35,7 @@ public class OperationFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==btQuery) {
-            String message="详细资料为:\n";
+            String message="您的详细资料为:\n";
             message+="姓名："+Conf.account+"\n";
             message+="学号："+Conf.password+"\n";
             message+="入校时间："+Conf.time+"\n";
