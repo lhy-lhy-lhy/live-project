@@ -52,6 +52,7 @@ public class ModifyDialog extends  JDialog implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        //确认输入是否正确
         if(e.getSource()==btModify) {
             String password1=pfPassword.getText();
             String password2=pfPassword2.getText();
