@@ -1,6 +1,5 @@
 package UserManageSystem;
-import java.io.FileReader;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 
@@ -15,7 +14,7 @@ public class FileOpe {
             pps.load(reader);
         }
         catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"文件操作异常");
+            JOptionPane.showMessageDialog(null,"鏂囦欢鎿嶄綔寮傚父");
             System.exit(0);
         }
         finally {
@@ -32,7 +31,7 @@ public class FileOpe {
             pps.list(ps);
         }
         catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"文件操作异常");
+            JOptionPane.showMessageDialog(null,"鏂囦欢鎿嶄綔寮傚父");
             System.exit(0);
         }
         finally {
