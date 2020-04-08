@@ -25,8 +25,8 @@ public class OperationFrame extends JFrame implements ActionListener {
         this.setSize(300,250);
         GUIUtil.toCenter(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        this.setVisible(true);
+        this.setResizable(false); //窗口大小不改变
+        this.setVisible(true);//将指定对象设为可见
         /**********************增加监听*******************************/
         btQuery.addActionListener(this);
         btModify.addActionListener(this);
