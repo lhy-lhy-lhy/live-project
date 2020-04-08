@@ -16,12 +16,12 @@ import java.text.SimpleDateFormat;
 //登记界面
 public class RegisterFrame extends JFrame implements ActionListener {
     /**********************定义各控件********************************/
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
     private JLabel lbAccount=new JLabel("输入姓名");
     private JTextField tfAccount=new JTextField(15);
     private JLabel lbPassword=new JLabel("输入学号");
     private JTextField pfPassword=new JTextField(15);
     private JLabel lbPassword2=new JLabel("输入确认学号");
-    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
     private JTextField pfPassword2=new JTextField(12);
     private JLabel lbName=new JLabel("输入入校时间");
     private JTextField tfName=new JTextField(12);
@@ -42,10 +42,6 @@ public class RegisterFrame extends JFrame implements ActionListener {
         this.add(pfPassword);
         this.add(lbPassword2);
         this.add(pfPassword2);
-        this.add(lbName);
-        this.add(tfName);
-        this.add(lbDept);
-        this.add(tfDept);
         this.add(btRegister);
         this.add(btLogin);
         this.add(btExit);
@@ -71,11 +67,11 @@ public class RegisterFrame extends JFrame implements ActionListener {
             String account=tfAccount.getText();
             FileOpe.getInfoByAccount(account);
             if(Conf.account!=null) {
-                JOptionPane.showMessageDialog(this,"用户已经登记");
+                JOptionPane.showMessageDialog(this,"学生已经登记");
                 return;
             }
-            String name=df.format(new Date());
-            String leave=df.format(new Date());
+            String time=df.format(new Date());
+            String leave="0";
             FileOpe.updateCustomer(account,password1,name,leave);
             JOptionPane.showMessageDialog(this,"登记成功");
         }
