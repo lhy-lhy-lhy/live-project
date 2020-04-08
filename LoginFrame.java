@@ -13,10 +13,9 @@ import javax.swing.JTextField;
 //查询界面
 //account 姓名
 //password 学号
+//实现输入姓名,学号进行查询的功能
 public class LoginFrame extends JFrame implements ActionListener {
     /****************************定义各控件**************************/
-    
-    
     private JLabel lbAccount=new JLabel("输入姓名");
     private JTextField tfAccount=new JTextField(15);
     private JLabel lbPassword=new JLabel("输入学号");
