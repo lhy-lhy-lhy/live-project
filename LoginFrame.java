@@ -10,21 +10,23 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.JTextField;
-//²éÑ¯½çÃæ
+//æŸ¥è¯¢ç•Œé¢
+//account å§“å
+//password å­¦å·
 public class LoginFrame extends JFrame implements ActionListener {
-    /****************************¶¨Òå¸÷¿Ø¼ş**************************/
+    /****************************å®šä¹‰å„æ§ä»¶**************************/
     
     
-    private JLabel lbAccount=new JLabel("ÊäÈëĞÕÃû");
+    private JLabel lbAccount=new JLabel("è¾“å…¥å§“å");
     private JTextField tfAccount=new JTextField(15);
-    private JLabel lbPassword=new JLabel("ÊäÈëÑ§ºÅ");
+    private JLabel lbPassword=new JLabel("è¾“å…¥å­¦å·");
     private JTextField pfPassword=new JTextField(15);
-    private JButton btLogin=new JButton("²éÑ¯");
-    private JButton btRegister=new JButton("µÇ¼Ç");
-    private JButton btExit=new JButton("ÍË³ö");
+    private JButton btLogin=new JButton("æŸ¥è¯¢");
+    private JButton btRegister=new JButton("ç™»è®°");
+    private JButton btExit=new JButton("é€€å‡º");
     public LoginFrame() {
-        /**********************½çÃæ³õÊ¼»¯*****************************/
-        super("²éÑ¯");
+        /**********************ç•Œé¢åˆå§‹åŒ–*****************************/
+        super("æŸ¥è¯¢");
         this.setLayout(new FlowLayout());
         this.add(lbAccount);
         this.add(tfAccount);
@@ -38,7 +40,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
-        /*****************************Ôö¼Ó¼àÌı************************/
+        /*****************************å¢åŠ ç›‘å¬************************/
         btLogin.addActionListener(this);
         btRegister.addActionListener(this);
         btExit.addActionListener(this);
@@ -50,10 +52,10 @@ public class LoginFrame extends JFrame implements ActionListener {
             String password=pfPassword.getText();
             FileOpe.getInfoByAccount(account);
             if(Conf.account==null||!Conf.password.equals(password)) {
-                JOptionPane.showMessageDialog(this,"²éÑ¯Ê§°Ü");
+                JOptionPane.showMessageDialog(this,"æŸ¥è¯¢å¤±è´¥");
                 return;
             }
-            JOptionPane.showMessageDialog(this,"²éÑ¯³É¹¦");
+            JOptionPane.showMessageDialog(this,"æŸ¥è¯¢æˆåŠŸ");
             this.dispose();
             new OperationFrame();
         }
@@ -62,7 +64,7 @@ public class LoginFrame extends JFrame implements ActionListener {
             new RegisterFrame();
         }
         else {
-            JOptionPane.showMessageDialog(this,"Ğ»Ğ»¹âÁÙ");
+            JOptionPane.showMessageDialog(this,"è°¢è°¢å…‰ä¸´");
             System.exit(0);
         }
     }
