@@ -10,7 +10,7 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-//修改界面
+//修改离校时间
 public class ModifyDialog extends  JDialog implements ActionListener {
     /***********************定义控件**************************/
     private JLabel lbMsg=new JLabel("姓名");
@@ -24,6 +24,7 @@ public class ModifyDialog extends  JDialog implements ActionListener {
     private JLabel lbLeave=new JLabel("修改离校时间");
     private JTextField tfLeave=new JTextField(Conf.leave,10);
     private JButton btModify=new JButton("记录");
+    private JButton btTime=new JButton("记录离校");
     private JButton btExit=new JButton("关闭’");
     public ModifyDialog(JFrame frm) {
         /**********************界面初始化***************************/
@@ -41,56 +42,19 @@ public class ModifyDialog extends  JDialog implements ActionListener {
         this.add(tfLeave);
         this.add(btModify);
         this.add(btExit);
-        this.setSize(240,200);
+        this.add(btTime);
+        this.setSize(300,200);
         GUIUtil.toCenter(this);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         /*******************增加监听*****************************/
-        btModify.addActionListener(this);
+         btModify.addActionListener(this);
         btExit.addActionListener(this);
+        //btTime.addActionListener(this);
         this.setResizable(false);
         this.setVisible(true);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==btModify) {
-            String password1=pfPassword.getText();
-            String password2=pfPassword2.getText();
-            if(!password1.equals(password2)) {
-                JOptionPane.showMessageDialog(this,"学号不相同¨");
-                return;
-            }
-            String time=tfTime.getText();
-            String leave=tfLeave.getText();
-            //存入静态变量
-            Conf.password=password1;
-            Conf.time=time;
-            Conf.leave=leave;
-            FileOpe.updateCustomer(Conf.account,password1,time,leave);
-            JOptionPane.showMessageDialog(this,"修改成功");
-        }
-        else {
-            this.dispose();
-        }
-    }
-}
-        this.add(lbName);
-        this.add(tfName);
-        this.add(lbDept);
-        this.add(tfDept);
-        this.add(btModify);
-        this.add(btExit);
-        this.setSize(240,200);
-        GUIUtil.toCenter(this);
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        /*******************增加监听*******************************/
-        btModify.addActionListener(this);
-        btExit.addActionListener(this);
-        this.setResizable(false);
-        this.setVisible(true);
-    }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        //确认输入是否正确
         if(e.getSource()==btModify) {
             String password1=pfPassword.getText();
             String password2=pfPassword2.getText();
@@ -98,14 +62,31 @@ public class ModifyDialog extends  JDialog implements ActionListener {
                 JOptionPane.showMessageDialog(this,"两个学号不相同");
                 return;
             }
-            String name=tfName.getText();
-            String dept=tfDept.getText();
+            String time=tfTime.getText();
+            String leave=tfLeave.getText();
             //将新的值存入静态变量
             Conf.password=password1;
-            Conf.time=name;
-            Conf.leave=dept;
-            FileOpe.updateCustomer(Conf.account,password1,name,dept);
+            Conf.time=time;
+            Conf.leave=leave;
+            FileOpe.updateCustomer(Conf.account,password1,time,leave);
             JOptionPane.showMessageDialog(this,"修改成功");
+        }
+        else if(e.getSource()==btTime) {
+          String password1=pfPassword.getText();
+             String password2=pfPassword2.getText();
+             if(!password1.equals(password2)) {
+                 JOptionPane.showMessageDialog(this,"两个学号不相同");
+                 return;
+             }
+             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+             String time=tfTime.getText();
+             String leave=df.format(new Date());
+             //将新的值存入静态变量
+             Conf.password=password1;
+             Conf.time=time;
+             Conf.leave=leave;
+             FileOpe.updateCustomer(Conf.account,password1,time,leave);
+             JOptionPane.showMessageDialog(this,"修改成功");
         }
         else {
             this.dispose();
